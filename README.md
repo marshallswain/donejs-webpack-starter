@@ -7,15 +7,19 @@ This application is built like any DoneJS application with the following excepti
 ## Webpack for app development, StealJS for modlet development
 Webpack is used in place of StealJS for app bundling.  StealJS is used for individual module (modlet) development, since Webpack can't do this.  The Webpack configuration is nearly 100% compatible with the default StealJS config.
 
-There are a few benefits to using Webpack:
+**There are a few benefits to using Webpack:**
+
 - Developers, developers, developers, developers - The developer experience is quite nice.
 - Faster app development.  Where loading a small app with Steal in development takes, on average in my experience, about 25 seconds to load (with all browser plugins disabled and the Chrome devtools open), a Webpack-bundled app generally takes less than a second.
 - Related to faster app development, the productivity boost that comes from the speedier workflow will make you smile over and over again.  You wont lose context of what you were working on when you're developing a part of the app that requires lots of page refreshing, like when testing logic on app load.  In a medium-sized consulting company, this could save thousands of dollars every year.
 - Lots of great Webpack plugins.  Webpack has a huge ecosystem of really powerful plugins.  Because it leverages Node.js, it can do things that can't be done in a browser-only environment.
 - Webpack's asset management plugins are really, really good.  It can load assets from image `src` attributes and CSS `url()` directives and bundle them into an output directory, which can be a pretty handy workflow, sometimes.
 - Hot Module Replacement - It works great it Webpack, but it also works really well in StealJS, so this isn't really a benefit of one module loader over the other.  It's in this starter template and it works.  Enjoy!
+- Use the `socket.io-client` package in your app instead of `steal-socket.io`.  `steal-socket.io` is needed whenever using Steal, so you might still need it in your modlets, on occasion.  The downside to using it is that it implements only a subset of the `socket.io-client` API (basically what's needed for Feathers applications to work).  You won't have to concern yourself with that if you're using Feathers, but either way, you'll generally be able to directly use the `socket.io-client`, now.
 
-There are also drawbacks to using Webpack:
+
+**There are also drawbacks to using Webpack:**
+
 - Webpack is more complicated to setup than StealJS.  This isn't as big of an issue once you have a working Webpack configuration, and this starter template includes one, so that's not much of an issue, anymore.
 - No asynchronous `can-import` support as found [here](https://canjs.com/doc/can-view-import.html#_can_importfrom__MODULE_NAME__content__can_import_). Similarly, I don't think there's [can-dynamic-import](https://canjs.com/doc/can-view-import.html#_can_dynamic_importfrom__MODULE_NAME__content__can_import_) support.
 - Incongruous development environments: Since Webpack supports more plugins than Steal, using two bundlers can present a situation where app development might have really good support for a technology (say loading Sass files), but it may be unavailable when you're developing modlets (indiviual modules and components within the app).  [Read more about the Modlet Workflow](https://css-tricks.com/key-building-large-javascript-apps-modlet-workflow/).
