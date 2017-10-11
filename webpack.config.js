@@ -48,6 +48,8 @@ module.exports = {
         test: /\.(png|jpg|gif)$/,
         use: [ 'file-loader' ]
       },
+      // This SVG loader technically isn't in use, since the font loader up above will match, first.
+      // But if you don't need the font loader (.woff, etc), this is a great way to handle SVGs.
       {
         test: /\.svg$/,
         loader: 'svg-inline-loader'

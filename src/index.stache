@@ -1,20 +1,55 @@
-<html>
-  <head>
-    <title>{{title}}</title>
-  </head>
-  <body>
-    <can-import from="donejs-webpack-starter/styles.less" />
-    <can-import from="donejs-webpack-starter/app" export-as="viewModel" />
+<can-import from="~/styles.less" />
+<can-import from="~/app" export-as="viewModel" />
+<can-import from="can-stache/helpers/route" />
 
-    <h1>{{message}}</h1>
+<ul class="menu">
+  <li><a href="{{ routeUrl(page='home') }}">Home</a></li>
+  <li><a href="{{ routeUrl(page='auth' section='login') }}">Login</a></li>
+  <li><a href="{{ routeUrl(page='auth' section='signup') }}">Signup</a></li>
+  <li><a href="{{ routeUrl(page='profile') }}">My Profile</a></li>
+  <li><a href="{{ routeUrl(page='admin') }}">Admin Section</a></li>
+</ul>
 
-    {{#switch env.NODE_ENV}}
-      {{#case "production"}}
-        <script src="{{joinBase 'steal.production.js'}}"></script>
-      {{/case}}
-      {{#default}}
-        <script src="/node_modules/steal/steal.js"></script>
-      {{/default}}
-    {{/switch}}
-  </body>
-</html>
+{{#switch displayedPage}}
+  {{#case "four-oh-four"}}
+    <h2>404 page</h2>
+  {{/case}}
+  {{#case "home"}}
+    <h2>Home Page</h2>
+  {{/case}}
+  {{#case "auth"}}
+    <h2>Auth Page</h2>
+
+    {{#is section 'login'}}
+      <h3>Login</h3>
+      <form on:submit="login(%event, email, password)">
+        <div>
+          <input type="text" name="email" placeholder="email" value:bind="email">
+        </div>
+        <div>
+          <input type="password" name="password" placeholder="password" value:bind="password">
+        </div>
+        <button on:click="login(%event, email, password)">Login</button>
+      </form>
+    {{/is}}
+    {{#is section 'signup'}}
+      <h3>Signup</h3>
+      <form on:submit="signup(%event, email, password)">
+        <div>
+          <input type="text" name="email" placeholder="email">
+        </div>
+        <div>
+          <input type="password" name="password" placeholder="password">
+        </div>
+        <button type="submit">Login</button>
+      </form>
+    {{/is}}
+  {{/case}}
+  {{#case "profile"}}
+    <h2>Profile Page</h2>
+  {{/case}}
+  {{#case "admin"}}
+    <h2>Admin Page</h2>
+  {{/case}}
+{{/switch}}
+

@@ -35,9 +35,9 @@ I've turned off DoneSSR support for this application starter template.  Since I 
 **Important:**
 
 After downloading or cloning this repository, you'll want to make the following changes:
-- Open the `package.json` and name your app.  Replace `donejs-webpack-starter` in all other areas where appropriate.
-- Edit the webpack.config.js and in the `resolve.alias` section, change `donejs-webpack-starter` to match the name you put in the `package.json`.  This will allow all of the aliasing to work just like StealJS (you'll see the tilde `~` alias in that same section.)
-- Set the title in `index.html`
+- Do a global find and replace of all instances of `donejs-webpack-starter` with your app's name.
+- Edit the webpack.config.js and in the `resolve.alias` section, verify that the `donejs-webpack-starter` has been updated to match the name of your app.  This will allow all of the aliasing to work just like StealJS (you'll see the tilde `~` alias in that same section.)
+- Verify the title in `index.html`
 
 To install all dependencies, (e.g. after cloning it from a Git repository) run
 
