@@ -78,18 +78,6 @@ const AppViewModel = DefineMap.extend({
   // Login and signup should be moved to their own components, but are here for demonstration.
   email: 'string',
   password: 'string',
-  login (event, email, password) {
-    debugger
-    event.preventDefault();
-
-    new Session({ email, password }).save()
-      .then(user => {
-        console.log('logged in user', user)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  },
   signup (event, email, password) {
     event.preventDefault();
 

@@ -1,6 +1,7 @@
 <can-import from="~/styles.less" />
 <can-import from="~/app" export-as="viewModel" />
 <can-import from="can-stache/helpers/route" />
+<can-import from="~/components/auth/login/login" />
 
 <ul class="menu">
   <li><a href="{{ routeUrl(page='home') }}">Home</a></li>
@@ -21,16 +22,7 @@
     <h2>Auth Page</h2>
 
     {{#is section 'login'}}
-      <h3>Login</h3>
-      <form on:submit="login(%event, email, password)">
-        <div>
-          <input type="text" name="email" placeholder="email" value:bind="email">
-        </div>
-        <div>
-          <input type="password" name="password" placeholder="password" value:bind="password">
-        </div>
-        <button on:click="login(%event, email, password)">Login</button>
-      </form>
+      <auth-login></auth-login>
     {{/is}}
     {{#is section 'signup'}}
       <h3>Signup</h3>

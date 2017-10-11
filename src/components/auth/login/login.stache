@@ -1,0 +1,10 @@
+<h3>Login</h3>
+<form on:submit="login(%event, email, password)">
+  <div>
+    <input type="text" name="email" placeholder="email" value:bind="email">
+  </div>
+  <div>
+    <input type="password" name="password" placeholder="password" value:bind="password">
+  </div>
+  <button on:click="login(%event, email, password)">Login</button>
+</form>

@@ -3,6 +3,10 @@ import QUnit from 'steal-qunit';
 
 import 'donejs-webpack-starter/models/test';
 
+import 'donejs-webpack-starter/components/auth/login/login-test';
+
+import 'donejs-webpack-starter/components/auth/signup/signup-test';
+
 F.attach(QUnit);
 
 QUnit.module('donejs-webpack-starter functional smoke test', {
